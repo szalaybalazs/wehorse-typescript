@@ -21,7 +21,6 @@ const reducers = {
     if (courseList[index]) courseList[index].wishListFlag = action.payload.isWishlisted;
     else console.log('Course not found with id: ', action.payload.courseId);
 
-    console.log(courseList, action.payload.courseId, courseList[index]);
     // Update local state
     return { ...state, courseList };
   }
