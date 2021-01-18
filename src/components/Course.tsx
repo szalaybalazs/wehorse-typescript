@@ -7,6 +7,7 @@ import { iCourse } from '../types';
 
 interface iProps {
   course: iCourse
+  isWishlisted: boolean
   wishlistCourse: (courseId: number, wishlist: boolean) => void
 }
 
@@ -17,8 +18,8 @@ interface iProps {
 // - { boolean } isNew whether the cours is new
 // - { boolean } wishListFlag whether the course is on the wishlist of the user
 // - { function } wishlistCourse callback to toggle wishlistFlag of the course
-const Course:React.FC<iProps> = ({ course: { courseId, courseName, isNew = false, wishListFlag }, wishlistCourse = () => {} }) => {
-  const _handleAction = () => wishlistCourse(courseId, !wishListFlag);
+const Course:React.FC<iProps> = ({ course: { courseId, courseName, isNew = false }, isWishlisted, wishlistCourse = () => {} }) => {
+  const _handleAction = () => wishlistCourse(courseId, !isWishlisted);
   return (
     <Box 
       mb={2}
@@ -46,7 +47,7 @@ const Course:React.FC<iProps> = ({ course: { courseId, courseName, isNew = false
       <Box p={1}>
         <IconButton
           onClick={_handleAction}
-          color={wishListFlag ? 'primary' : 'secondary'}
+          color={isWishlisted ? 'primary' : 'secondary'}
         >
           <FavoriteIcon fontSize='small' />
         </IconButton>

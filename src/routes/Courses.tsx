@@ -40,7 +40,7 @@ const Courses:React.FC<iProps> = ({ courses = [], fetchCourses = () => {}, wishl
             { displayedCourses.length } Kurse
           </Typography>
         </Box>
-        { displayedCourses.map(course => <Course key={course.courseId} course={course} />)}
+        { displayedCourses.map(course => <Course key={course.courseId} course={course} isWishlisted={course.wishListFlag} />)}
       </Container>
     </Fragment>
   )

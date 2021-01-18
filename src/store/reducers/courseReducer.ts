@@ -19,7 +19,9 @@ const reducers = {
     const index = courseList.findIndex(course => course.courseId === action.payload.courseId);
     // Check if course is in the list, and then update the list
     if (courseList[index]) courseList[index].wishListFlag = action.payload.isWishlisted;
- 
+    else console.log('Course not found with id: ', action.payload.courseId);
+
+    console.log(courseList, action.payload.courseId, courseList[index]);
     // Update local state
     return { ...state, courseList };
   }
